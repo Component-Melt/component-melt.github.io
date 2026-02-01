@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | ComponentMelt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="documentation.css">
+    <link rel="icon" type="image/png" href="./cmlogo4.png">
+</head>
+<body class="docs-body">
+
+    <header class="navbar">
+        <div class="container flex-header">
+            <a href="index.html" class="logo-link">
+                <img src="./cmlogo4.png" alt="ComponentMelt Logo" class="logo-img">
+                <span class="brand-name">ComponentMelt</span>
+            </a>
+            <nav class="nav-links">
+                <a href="documentation.html">Documentation</a>
+                <a href="releaseNotes.html">Release Notes</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="docs-layout container">
+        <aside class="docs-sidebar">
+            <nav class="sidebar-nav">
+                <p class="sidebar-label">Getting Started</p>
+                <a href="#introduction">Introduction</a>
+
+                <p class="sidebar-label">Workflow</p>
+                <a href="#workflow">CLI Quickstart</a>
+                <a href="#creation">Module Creation</a>
+                
+                <p class="sidebar-label">Implementation</p>
+                <a href="#module-logic">The Contract</a>
+                <a href="#host-integration">Host Usage</a>
+
+                <p class="sidebar-label">More</p>
+                <a href="#examples">Examples</a>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="introduction">
+                <h1>Introduction</h1>
+                <p>ComponentMelt is a library designed to allow modularization of react components. It allows you to build React components that own their logic but remain structurally invisible to the application hosting them so they can be reused in any react application.</p>
+            </section>
+
+            <section id="installation">
+                <h2>Installation</h2>
+                <p>Install the library via your preferred package manager:</p>
+                <pre>
+<code>npm install component-melt
+# or
+npm install --save-dev component-melt</code></pre>
+            </section>
+
+            <section id="workflow">
+                <h1>Developer Workflow</h1>
+                <p>ComponentMelt provides a CLI to scaffold module creation. These modules shall be published to a private or public registry (your choice) and imported by any host application that satisfies their structural contract.</p>
+            </section>
+        
+            <section id="creation">
+                <h2>1. Create Your Module</h2>
+                <p>Initialize a new module and add a component using the <code>melt-gen</code> CLI tool.</p>
+                
+                <pre>
+<code># Initialize the module
+melt-gen init module-example --scope component-melt
+        
+# Add your functional component
+cd module-example
+melt-gen add TestComponent</code></pre>
+                <div class="info-box">
+                    <strong>--scope:</strong> Scope is not really needed in order to generate the modules. You only want to use it if the module needs an org prefix.
+                </div>
+            </section>
+        
+            <section id="module-logic">
+                <h2>2. Define the Contract</h2>
+                <p>Inside your module, declare exactly what the component needs to operate. In this example, our component requires a text-update capability for the "example" reducer.</p>
+                
+                <pre>
+<code>const contract = {
+    name: "TextTester",
+    requiredCapabilities: {
+        example: ['UPDATE_TEXT'] 
+    }
+}
+        
+export const TextTester = createComponent({
+    component: TestComponent,
+    contract
+})</code></pre>
+                <p>The module with the component can now be published to your registry and shared across projects.</p>
+            </section>
+        
+            
+        
+            <section id="host-integration">
+                <h2>3. Host Implementation</h2>
+                <p>After installing your module use <strong>Blueprints</strong> to satisfy the contract.</p>        
+                <p>In your host app, declare the capabilities before rendering. If the <code>actionArray</code> does not satisfy the contract, the component will not render. Instead, if no fallback is provided when using <code>createComponent</code>, ComponentMelt will show it's own component showing the contract violations.</p>
+        
+                <pre>
+<code>import { blueprints } from 'component-melt';
+import { TextTester } from '@component-melt/module-example';
+        
+// Host declares it can handle the module's needs
+blueprints.declareCapability('example', ['UPDATE_TEXT']);
+        
+function App() {
+    return &lt;TextTester /&gt;;
+}</code></pre>
+            </section>
+
+            <section id="examples">
+                <h1>Examples</h1>
+                <p>A very rudimentary examples is provided at <a href="https://github.com/Component-Melt/component-melt-example/">component-melt-example</a></p> 
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <a href="#" class="logo-link">
+                    <img src="./cmlogo4.png" alt="ComponentMelt Logo" class="logo-img">
+                    <span class="brand-name">ComponentMelt</span>
+                </a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 ComponentMelt. All rights reserved.</p>
+                <nav class="footer-nav">
+                    <a href="privacyPolicy.html">Privacy Policy</a>
+                    <a href="legalNotice.html">Legal Notice</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top"><img src="./arrow.png" class="arrow-img" /></button>
+
+    <script src="app.js"></script>
+</body>
+</html>

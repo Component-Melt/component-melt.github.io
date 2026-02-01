@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Notes | ComponentMelt</title>
+    <link rel="stylesheet" href="releaseNotes.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./cmlogo4.png">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container flex-header">
+            <a href="index.html" class="logo-link">
+                <img src="./cmlogo4.png" alt="ComponentMelt Logo" class="logo-img">
+                <span class="brand-name">ComponentMelt</span>
+            </a>
+            <nav class="nav-links">
+                <a href="documentation.html">Documentation</a>
+                <a href="releaseNotes.html">Release Notes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container release-container">
+        <header class="release-header">
+            <p class="subtitle">Changelog</p>
+            <h1 class="section-title">Product Updates</h1>
+            <p class="description">New features, improvements, and architectural fixes.</p>
+        </header>
+
+        <section class="timeline">
+            <div class="release-entry">
+                <div class="release-meta">
+                    <span class="version-tag">v1.0.0</span>
+                    <span class="release-date">January 27, 2026</span>
+                </div>
+                <div class="release-details">
+                    <h3>The Genesis Release</h3>
+                    <p>This milestone marks the stable release of ComponentMelt, introducing a new paradigm for building React modules that exist independently of their host applications.</p>
+                    <ul class="features-list">
+                        <li><strong>Host-Agnostic Core:</strong> Strict boundary layer to prevent host app state pollution.</li>
+                        <li><strong>Externalized Reducer Pattern:</strong> Logic resides outside the module for maximum cross-project reusability.</li>
+                        <li><strong>Structural Integrity:</strong> Automated validation of required actions and reducers upon mounting.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <a href="#" class="logo-link">
+                    <img src="./cmlogo4.png" alt="ComponentMelt Logo" class="logo-img">
+                    <span class="brand-name">ComponentMelt</span>
+                </a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 ComponentMelt. All rights reserved.</p>
+                <nav class="footer-nav">
+                    <a href="privacyPolicy.html">Privacy Policy</a>
+                    <a href="legalNotice.html">Legal Notice</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top"><img src="./arrow.png" class="arrow-img" /></button>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

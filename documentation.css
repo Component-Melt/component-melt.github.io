@@ -1,0 +1,81 @@
+/* Docs Layout */
+.docs-layout {
+    display: flex;
+    gap: 60px;
+    padding-top: 120px;
+    min-height: 100vh;
+}
+
+.docs-sidebar {
+    width: 240px;
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+}
+
+.sidebar-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    margin: 25px 0 10px 0;
+    font-weight: 700;
+}
+
+.sidebar-nav a {
+    display: block;
+    text-decoration: none;
+    padding: 8px 0;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.sidebar-nav a:hover {
+    color: #888;
+}
+
+.docs-content {
+    flex: 1;
+    max-width: 750px;
+}
+
+.docs-content section {
+    margin-bottom: 80px;
+}
+
+.docs-content h1 { font-size: 2.5rem; margin-bottom: 20px; }
+.docs-content h2 { font-size: 1.8rem; margin: 40px 0 20px 0; border-bottom: 1px solid #000; padding-bottom: 10px; }
+.docs-content p { line-height: 1.7; color: #000; margin-bottom: 20px; }
+
+/* Code Blocks */
+pre {
+    background: #111;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: #e0e0e0;
+}
+
+p code {
+    background-color: #000;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #fff;
+    padding: 20px;
+    margin: 30px 0;
+}
+
+@media (max-width: 900px) {
+    .docs-layout { flex-direction: column; }
+    .docs-sidebar { position: relative; top: 0; width: 100%; }
+}
